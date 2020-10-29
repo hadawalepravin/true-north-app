@@ -1,0 +1,51 @@
+<div class="mat-elevation-z8 data-table">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applySearchFilter($event.target.value)" placeholder="Global Search">
+    </mat-form-field>
+    <i matTooltip="Refresh Users" class="fa fa-refresh" style="cursor: pointer;" (click)="refreshUsers()"
+      aria-hidden="true"></i>
+  </div>
+  <br />
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <ng-container matColumnDef="name">
+      <th class="header-row name-row" mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td class="name-cell" mat-cell *matCellDef="let row">
+        <img class="profile-picture" width="32" src={{row.picture}}>
+        {{row.name}}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="dob">
+      <th class="header-row default-row" mat-header-cell *matHeaderCellDef mat-sort-header>Date Of Birth</th>
+      <td mat-cell *matCellDef="let row">{{row.dob}}</td>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <th class="header-row default-row" mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+      <td mat-cell *matCellDef="let row" (contextmenu)="onRightClick($event, row)">{{row.city}}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th class="header-row email-row" mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let row">{{row.email}}</td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th class="header-row default-row" mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+      <td mat-cell *matCellDef="let row">{{row.phone}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="10"
+    [pageSizeOptions]="[10, 15, 25, 50, 100, 200]">
+  </mat-paginator>
+</div>
+
+<div class="hidden-menu" [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y"
+  [matMenuTriggerFor]="rightMenu"></div>
+
+<mat-menu #rightMenu="matMenu">
+  <ng-template matMenuContent let-item="item">
+    <button *ngFor="let city of userService.cities" mat-menu-item (click)="applyColumnFilter(city)">
+      {{ city }}
+    </button>
+  </ng-template>
+</mat-menu>

@@ -1,0 +1,71 @@
+.full-width-table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.data-table {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+  text-align: center;
+}
+
+.profile-picture {
+  vertical-align: middle; 
+  border-radius: 50%;
+}
+
+.profile-picture:hover {
+  transform: scale(2);
+}
+
+.hidden-menu {
+  visibility: hidden; 
+  position: fixed;
+}
+
+.mat-form-field {
+  text-align: center;
+  width: 20em;
+}
+
+.header-row {
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+.name-cell {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  padding: 8px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+mat-footer-row, mat-header-row, mat-row, td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  border-color: rgba(0,0,0,.12);
+}
+
+tr.mat-row:hover {
+  background-color: #ebf2ff;
+}
+
+.name-row {
+  width:30%;
+}
+
+.default-row {
+  width:15%;
+}
+
+.email-row {
+  width:25%;
+}

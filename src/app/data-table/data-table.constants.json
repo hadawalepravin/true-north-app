@@ -1,0 +1,13 @@
+{
+  "userTableColumns": [
+    "name",
+    "dob",
+    "city",
+    "email",
+    "phone"
+  ],
+  "menuTopLeftPosition": {
+    "x": "0",
+    "y": "0"
+  }
+}
